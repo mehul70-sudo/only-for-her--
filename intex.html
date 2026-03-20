@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Forever ❤️</title>
+    <style>
+        @import url('https://fonts.googleapis.com');
+        
+        body { 
+            margin: 0; padding: 0; background: #fff0f5; 
+            font-family: 'Poppins', sans-serif; overflow: hidden; 
+            text-align: center; transition: background 2s ease;
+        }
+
+        .section { 
+            height: 100vh; width: 100%; display: none; 
+            flex-direction: column; justify-content: center; align-items: center; 
+            position: absolute; top: 0; left: 0; padding: 20px; box-sizing: border-box;
+            animation: fadeInScale 1.2s ease-out;
+        }
+        
+        #page1 { display: flex; }
+
+        @keyframes fadeInScale {
+            0% { opacity: 0; transform: scale(0.9) translateY(20px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); }
+        }
+
+        .icon-box { font-size: 80px; margin-bottom: 20px; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+
+        h1 { font-family: 'Dancing Script', cursive; color: #ff4d4d; font-size: 3.5rem; margin: 10px; text-shadow: 2px 2px 10px rgba(255, 77, 77, 0.2); }
+        
+        .para { 
+            font-size: 1.2rem; color: #555; max-width: 600px; 
+            line-height: 1.8; font-style: italic; background: rgba(255, 255, 255, 0.4);
+            padding: 20px; border-radius: 20px; backdrop-filter: blur(5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .btn { 
+            background: linear-gradient(45deg, #ff4d4d, #ff8080); color: white; 
+            padding: 15px 40px; border: none; border-radius: 50px; cursor: pointer; 
+            font-size: 1.1rem; margin-top: 30px; font-weight: bold; 
+            box-shadow: 0 5px 15px rgba(255,77,77,0.3); transition: 0.3s;
+        }
+        .btn:hover { transform: scale(1.1); box-shadow: 0 8px 20px rgba(255,77,77,0.5); }
+
+        #noBtn { position: absolute; transition: 0.1s; }
+
+        /* Background Shine */
+        .star { position: absolute; background: white; border-radius: 50%; opacity: 0.5; animation: twinkle var(--d) infinite; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; transform: scale(1.2); } }
+
+        .heart-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1; }
+        .floating-heart { position: absolute; color: #ff4d4d; animation: floatUp 4s infinite linear; }
+        @keyframes floatUp { 0% { transform: translateY(100vh); opacity: 1; } 100% { transform: translateY(-10vh); opacity: 0; } }
+    </style>
+</head>
+<body>
+
+    <audio id="myMusic" loop>
+        <source src="C:\Users\mukesh khichi\OneDrive\Desktop\New folder\Bairan Banjaare (pagalall.com).mp3" type="audio/mpeg">
+    </audio>
+
+    <div id="starContainer"></div>
+    <div class="heart-bg" id="heartContainer"></div>
+
+    <!-- PAGE 1: INTRO -->
+    <div id="page1" class="section">
+        <div class="icon-box">✨</div>
+        <h1>Hey...</h1>
+        <p class="para">I have been carrying these thoughts for a long time. Today, I just want to pour my heart out to you. Will you listen? ❤️</p>
+        <button class="btn" onclick="startStory()">Yes, I'm Listening ❤️</button>
+    </div>
+
+    <!-- PAGE 2: THE FEELING -->
+    <div id="page2" class="section">
+        <div class="icon-box">🌸</div>
+        <h1>The Way You Are...</h1>
+        <p class="para">Do you even know how beautiful you really are? The way you speak, the way you laugh, and how you make everyone around you so happy. Just being in your presence feels like a warm hug on a cold night.</p>
+        <button class="btn" onclick="nextPage(3)">Tell me more... 👉</button>
+    </div>
+
+    <!-- PAGE 3: THE MOMENT -->
+    <div id="page3" class="section">
+        <div class="icon-box">💫</div>
+        <h1>Every Moment...</h1>
+        <p class="para">I find myself looking at my phone, waiting for your message. Every notification makes my heart skip a beat. You've become the best part of my life, my first thought in the morning and my last prayer at night.</p>
+        <button class="btn" onclick="nextPage(4)">Keep going... 👉</button>
+    </div>
+
+    <!-- PAGE 4: THE PROMISE -->
+    <div id="page4" class="section">
+        <div class="icon-box">🌿</div>
+        <h1>My Promise...</h1>
+        <p class="para">If you give me a chance, I promise to be the person who always stays. Through the storms and the sunshine, I want to be your safe place. I want to celebrate your wins and hold your hand through the losses.</p>
+        <button class="btn" onclick="nextPage(5)">One last thing... 👉</button>
+    </div>
+
+    <!-- PAGE 5: THE QUESTION -->
+    <div id="page5" class="section">
+        <div class="icon-box">💍</div>
+        <h1>Will You Be Mine?</h1>
+        <p class="para">I don't just want a moment with you; I want a lifetime of memories. I really, truly love you. <br><br><b>Will you be my forever?</b></p>
+        <div style="margin-top: 40px; position: relative; width: 100%; height: 100px;">
+            <button class="btn" onclick="celebrate()">YES! 🤭</button>
+            <button class="btn" id="noBtn" onmouseover="moveNo()">No 😢</button>
+        </div>
+    </div>
+
+    <!-- SUCCESS PAGE -->
+    <div id="successPage" class="section">
+        <h1 style="color: white; font-size: 5rem;">YAYYYYY! ❤️</h1>
+        <p style="color: white; font-size: 1.8rem; font-weight: bold;">I am the luckiest person in the world! <br> I LOVE YOU! 😘</p>
+        <div style="font-size: 80px;">🎉💖💍🥰</div>
+    </div>
+
+    <script>
+        const music = document.getElementById('myMusic');
+
+        function startStory() {
+            music.play().catch(e => console.log("Music blocked by browser"));
+            nextPage(2);
+            document.body.style.background = "#ffd1dc"; // Change to warmer pink
+        }
+
+        function nextPage(num) {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById('page' + num).style.display = 'flex';
+            
+            // Randomly shift background colors for a romantic feel
+            const colors = ["#fff0f5", "#ffd1dc", "#ffc0cb", "#ffe4e1"];
+            document.body.style.background = colors[num % colors.length];
+        }
+
+        function moveNo() {
+            const btn = document.getElementById('noBtn');
+            btn.style.left = Math.random() * (window.innerWidth - 150) + 'px';
+            btn.style.top = Math.random() * (window.innerHeight - 150) + 'px';
+        }
+
+        function celebrate() {
+            document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+            document.getElementById('successPage').style.display = 'flex';
+            document.body.style.background = "#ff3366";
+            setInterval(createHeart, 100);
+        }
+
+        // Star Background Logic
+        const starContainer = document.getElementById('starContainer');
+        for (let i = 0; i < 50; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 4 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + 'vw';
+            star.style.setProperty('--d', (Math.random() * 3 + 1) + 's');
+            starContainer.appendChild(star);
+        }
+
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('floating-heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.fontSize = (Math.random() * 20 + 20) + 'px';
+            document.getElementById('heartContainer').appendChild(heart);
+            setTimeout(() => heart.remove(), 4000);
+        }
+        setInterval(createHeart, 500);
+    </script>
+</body>
+</html>
